@@ -80,19 +80,15 @@ create table notice(id int(3) not null auto_increment, title varchar(35),info va
 alter table notice AUTO_INCREMENT = 1;
 
 
-create table vendor(vid varchar(15) primary key,password varchar(20),vname varchar(30),vmob varchar(12),
-		vemail varchar(40),company varchar(15),address varchar(100));
+create table vendor(vid varchar(15) primary key,password varchar(20),vname varchar(30),vmob varchar(12),vemail varchar(40),company varchar(15),address varchar(100));
 
 
-create table tender(tid varchar(15) primary key,tname varchar(40),ttype varchar(20),tprice int,
-		    tdesc varchar(300),tdeadline date,tloc varchar(70));
+create table tender(tid varchar(15) primary key,tname varchar(40),ttype varchar(20),tprice int,tdesc varchar(300),tdeadline date,tloc varchar(70));
 
-create table bidder (bid varchar(15) primary key,vid varchar(15) references vendor(vid),tid varchar(15) references tender(tid),
-		bidamount int,deadline date,status varchar(10));
+create table bidder (bid varchar(15) primary key,vid varchar(15) references vendor(vid),tid varchar(15) references tender(tid),bidamount int,deadline date,status varchar(10));
 
 
-create table tenderstatus(tid varchar(15) primary key references tender(tid),bid varchar(15) references bidder(bid),
-		status varchar(15) not null,vid varchar(15) references vendor(vid));
+create table tenderstatus(tid varchar(15) primary key references tender(tid),bid varchar(15) references bidder(bid),status varchar(15) not null,vid varchar(15) references vendor(vid));
 
 INSERT INTO tender VALUES ('T20190725022124','Gandhi Setu Highway','maintainence',50000,'lkjhgfd','2019-07-19','Patna, Bihar'),('T20190725022416','MEGA CITY CONNECTING ROAD CONTRUCTION','construction',100000,'mega city road contruction','2019-09-14','Delhi'),('T20190725022601','KOKATA HALDIA BRIDGE CONTRUCTION','construction',5000000,'bridge contruction from kolkata to haldia','2019-07-28','KOLATA-HALDIA'),('T20190725101239','Game Development','software',150000,'We are going to start a project on game development using GPS specification. Interested condidates are required to bid as soon as possible','2019-07-19','Banglore, India'),('T20190725101322','Game Development','software',150000,'We are going to start a project on game development using GPS specification. Interested condidates are required to bid as soon as possible','2019-07-19','Banglore, India');
 
